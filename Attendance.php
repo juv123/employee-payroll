@@ -43,8 +43,8 @@ class Attendance{
     public function getAllAttendance(){
         $query="select  a.id, e.employee_code, e.name, a.date, a.status  from ".$this->table_name." a JOIN employees e on e.id=a.employee_id where e.status=:status order by a.date desc";
         $stmt=$this->conn->prepare($query);
-        $stmt->bindPram(':status','active');
-        $stmt->execute();
+        $status='active';
+        $stmt->execute(['status' => $status]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     public function updateAttendance($id,$status){

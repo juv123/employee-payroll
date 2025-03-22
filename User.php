@@ -42,7 +42,8 @@ class User{
     public function getEmployeeId($username){
         $query="select id from employees where emailid=:emailid and status=:status";
         $stmt=$this->conn->prepare($query);
-        $stmt->execute([':emailid'=>$username,':status'=>'active']);
+        $status='active';
+        $stmt->execute([':emailid'=>$username,':status'=>$status]);
         $employee=$stmt->fetch(PDO::FETCH_ASSOC);
         $employee_id=$employee['id'];
         return $employee_id;

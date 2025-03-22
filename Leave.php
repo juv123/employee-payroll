@@ -71,7 +71,8 @@ public function sanctionLeave($leave_id, $status) {
             // Get employee leave balance
             $stmt = $this->conn->prepare("SELECT name,employee_code,allowed_leaves,emailid FROM employees WHERE id = :id and status=:status");
             $stmt->bindParam(':id', $employee_id);
-            $stmt->bindParam(':status', 'active');
+            $leave_status='active';
+            $stmt->bindParam(':status', $leave_status);
             $stmt->execute();
             $employee = $stmt->fetch(PDO::FETCH_ASSOC);
             //print_r($employee);

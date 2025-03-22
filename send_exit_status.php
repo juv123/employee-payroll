@@ -14,15 +14,15 @@ function sendExitNotification($employeeEmail,$employeeName,$status) {
     try {
         // SMTP configuration
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com'; // Change this to your SMTP server
+        $mail->Host       =  getenv('MAIL_HOST'); // Fetch from .env
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'deegaaug'; // Your email
-        $mail->Password   = 'jatjwjzzokvqswoj'; // Your email password
+        $mail->Username   = getenv('MAIL_USERNAME'); // Fetch from .env
+        $mail->Password   = getenv('MAIL_PASSWORD'); // Fetch from .env
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port       = 587;
+        $mail->Port       =  getenv('MAIL_PORT');
 
         // Sender & recipient
-        $mail->setFrom('deegaaug@gmail.com', 'Admin Department');
+        $mail->setFrom(getenv('MAIL_FROM_ADDRESS'), 'Admin Department');
         $mail->addAddress($employeeEmail,$employeeName, $status);
 
         // Email subject & body

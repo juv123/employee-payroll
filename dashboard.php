@@ -41,10 +41,21 @@ $role = $_SESSION['role'];
                 <button class="nav-link" id="toggleEmpBtn" >Employees</button>
             </li>
             <li class="nav-item"><a class="nav-link" href="manage_attendance.php">Attendance</a></li>
-            <li class="nav-item"><a class="nav-link" href="manage_leaves.php">Leaves</a></li>
-            <li class="nav-item"><a class="nav-link" href="manage_salary.php">Salary</a></li>
-            <li class="nav-item"><a class="nav-link" href="manage_exit.php">Exit</a></li>
-        <?php } ?>
+            <li class="nav-item"><a class="nav-link" href="sanction_leave.php">Leaves</a></li>
+            <li class="nav-item"><a class="nav-link" href="admin_payslips.php">Salary</a></li>
+            <li class="nav-item"><a class="nav-link" href="exit_process.php">Exit</a></li>
+        <?php } 
+        elseif ($_SESSION['role'] === 'employee') { ?>  
+            <li class="nav-item">
+                <button class="nav-link" id="toggleEmpBtn" >Employees</button>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="apply_leave.php">Leaves</a></li>
+            <li class="nav-item"><a class="nav-link" href="employee_payslip.php">Salary</a></li>
+            <li class="nav-item"><a class="nav-link" href="exit_request.php">Exit</a></li>
+        <?php }
+        else{
+
+        } ?>
     </ul>
 </div>
 

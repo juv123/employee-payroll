@@ -11,9 +11,10 @@ class Salary{
         $stmt = $this->conn->prepare("SELECT id, name, employee_code, department, position, salary 
         FROM employees 
         WHERE id = :id AND status = :status");
+        $status='active';
    $stmt->execute([
   "id" => $employee_id,
-   "status" => "active" // Ensure this matches your DB value
+   "status" =>$status // Ensure this matches your DB value
 ]);
     return $stmt->fetch(PDO::FETCH_ASSOC);
     }

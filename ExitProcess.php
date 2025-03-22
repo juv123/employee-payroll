@@ -64,7 +64,8 @@ class ExitProcess
 
             $stmt = $this->conn->prepare("UPDATE employees 
             SET status = :status where id = :id");
-            $stmt->execute([':status' => 'inactive', ':id'=>$employee['employee_id']]);
+            $employee_status='inactive';
+            $stmt->execute([':status' =>  $employee_status, ':id'=>$employee['employee_id']]);
 
         } else {
             echo "Error processing request.";

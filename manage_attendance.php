@@ -8,9 +8,10 @@ $db = $database->getConnection();
 $attendance = new Attendance($db);
 
 // Fetch active employees
-$query = "SELECT id, employee_code, name FROM employees WHERE status='active'";
+$query = "SELECT id, employee_code, name FROM employees WHERE status=:status";
 $stmt = $db->prepare($query);
-$stmt->execute();
+$status='active';
+$stmt->execute(['status'=>$status]);
 $employees = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Fetch Attendance Data
